@@ -1,0 +1,33 @@
+<h1>Listings</h1>
+
+
+
+{{#each listings}}
+
+
+<div>
+
+    <hr>
+
+    <h3>{{this.title}}</h3>
+
+    <p>{{this.content}}</p>
+
+
+    <p>by: {{this.author.username}}</p>
+
+    <hr>
+    
+    {{!-- How we alow only authors of post to delete their post --}}
+    {{#if this.owned}}
+
+    <form action="/listings/delete/{{this._id}}" method="POST"><button>Delete This Listing</button></form>
+
+
+    {{/if}}
+
+</div>
+
+
+
+{{/each}}
