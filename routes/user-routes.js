@@ -51,7 +51,7 @@ router.post('/signup', (req, res, next)=>{
           next(err);
       })
     }else if (user) {
-        req.flash('error', "We found a user with that email. Try Loging in with your username.")
+        req.flash('error', "We found a user with that email. Try Loging in with your username or with Google.")
         res.redirect('/login')
     }else{
       res.render('user-views/profile') 
@@ -104,7 +104,6 @@ router.get("/auth/google/callback", passport.authenticate("google", {
 //Profiles route
 router.get('/profile',(req, res, next)=>{
   if(!req.user){
-    // this is how you can manually add something to req.flash
     req.flash('error', "you must be logged in to view the top secret profile page")
     res.redirect('/login')
   }

@@ -152,7 +152,8 @@ passport.use(new GoogleStrategy(
 
           const newUser = new User({
             googleID: profile.id,
-            email: profile._json.email
+            email: profile._json.email,
+            username: profile._json.email.substr(0, profile._json.email.indexOf('@')).replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'')
           });
 
           newUser.save()
