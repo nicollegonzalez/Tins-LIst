@@ -111,14 +111,17 @@ passport.use(new LocalStrategy((username, password, next) => {
       return next(null, false, { message: "Sorry we couldn't find that username" });
     }
     if (!bcrypt.compareSync(password, user.password)) {
-      return next(null, false, { message: "Password not correct for that username" });
+      return next(null, false, { message: "Incorrect Password" });
     }
     return next(null, user);
   });
 }));
 
+//Adding some stuff I might not need below
+
 //For Google Auth
-passport.use(new GoogleStrategy({
+passport.use(new GoogleStrategy(
+{
   clientID: process.env.GOOGLEID,
   clientSecret: process.env.GOOGLESECRET,
   callbackURL: "/auth/google/callback"
@@ -186,6 +189,8 @@ app.use(passport.session());
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   res.locals.msg         = req.flash('error')
+  // res.locals.err         = req.flash('error')
+  // res.locals.yay         = req.flash('success')
   next();
 });
 
