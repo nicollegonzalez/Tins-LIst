@@ -63,20 +63,10 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Express - Generated with IronGenerator'; //CHANGEME
 
 
 
-// /*Session Stuff*/
-// app.use(session({
-//   secret: "Shhhh",
-//   cookie: { maxAge: 60000 },
-//   store: new MongoStore({
-//     mongooseConnection: mongoose.connection,
-//     ttl: 24 * 60 * 60 
-//   })
-// }));
-//using the lines below rather than above.
 app.use(session({
   secret: "Shhhh",
   resave: true,
@@ -116,8 +106,6 @@ passport.use(new LocalStrategy((username, password, next) => {
     return next(null, user);
   });
 }));
-
-//Adding some stuff I might not need below
 
 //For Google Auth
 passport.use(new GoogleStrategy(

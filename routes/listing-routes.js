@@ -3,24 +3,27 @@ const router  = express.Router();
 
 const Listing    = require('../models/Listing');
 
+const uploadMagic = require('../config/cloundinary-setup');
+
 
 
 router.get('/listings', (req, res, next)=>{
 
   Listing.find().populate('author')
   .then((allTheListings)=>{
-      //checking if user already exist 
-      if(req.user){
-      
-      allTheListings.forEach((eachListing)=>{
+    //checking if user already exist 
+    if(req.user){
+    
+    allTheListings.forEach((eachListing)=>{
+      console.log('its a listing')
 
-          if(eachListing.author._id.equals(req.user._id)){
-              eachListing.owned = true;
-          }
+        if(eachListing.author._id.equals(req.user._id)){
+            eachListing.owned = true;
+        }
 
-      })
+    })
 
-  }
+    }
 
     res.render('listing-views/all-the-listings', {listings: allTheListings})
   })
@@ -38,23 +41,33 @@ router.get('/listings/add-new', (req, res, next)=>{
       req.flash('error', 'must be logged in to make listings')
       res.redirect('/login')
   }
+  else{
+    res.render('listing-views/add-listing')
+  }
 
-  res.render('listing-views/add-listing')
 
 })
 
 
+// router.post('/celebrities/create-new-celebrity',uploadMagic.single('thePic'),(req,res,next)=>{
+router.post('/listings/create-new',uploadMagic.single('thePic'),(req, res, next)=>{
+// router.post('/listings/create-new',(req, res, next)=>{
 
-router.post('/listings/create-new', (req, res, next)=>{
+  // let theTitle = req.body.theTitle;
+  // let theDescription = req.body.theDescription;
+  const {theTitle, theDescription} = req.body;
+  const theAuthor  = req.user._id;
+  const theImg = req.file.url;
+  console.log(theTitle);
+  console.log(theDescription);
+  console.log(theAuthor);
 
-  let newTitle = req.body.theTitle;
-  let newDescription = req.body.theDescription;
-  let newAuthor  = req.user._id;
 
   Listing.create({
-      title: newTitle,
-      description: newDescription,
-      author: newAuthor
+      title: theTitle,
+      image: theImg,
+      description: theDescription,
+      author: theAuthor
   })
   .then(()=>{
       req.flash('error', 'listing successfully created')

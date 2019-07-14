@@ -13,7 +13,7 @@ const listingSchema = new Schema({
 
 
 
-const Listing = mongoose.model('Listing', listingSchema);
+const ListingModel = mongoose.model('Listing', listingSchema);
 
 
-module.exports = Listing;
+module.exports = ListingModel;
