@@ -48,12 +48,12 @@ router.get('/listings/add-new', (req, res, next)=>{
 router.post('/listings/create-new', (req, res, next)=>{
 
   let newTitle = req.body.theTitle;
-  let newContent = req.body.theContent;
+  let newDescription = req.body.theDescription;
   let newAuthor  = req.user._id;
 
   Listing.create({
       title: newTitle,
-      content: newContent,
+      description: newDescription,
       author: newAuthor
   })
   .then(()=>{
