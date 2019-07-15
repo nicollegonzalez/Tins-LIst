@@ -1,13 +1,11 @@
-<h1>Listings</h1>
-
+<div class="all-the-listings-cotainer">
+    <h1>Listings</h1>
 
 
 {{#each listings}}
 
 
-<div>
-
-    <hr>
+<div class="listing-card">
 
     <h3>{{this.title}}</h3>
 
@@ -15,15 +13,13 @@
         <img src="{{this.image}}" alt="image of {{this.title}}">
     </div>
 
-    
-
     <p>{{this.description}}</p>
 
     <p>{{this.price}}</p>
 
     <p>by: {{this.author.username}}</p>
 
-    <hr>
+
     
     {{!-- How we alow only authors of post to delete their post --}}
     {{#if this.owned}}
@@ -38,3 +34,4 @@
 
 
 {{/each}}
+</div>

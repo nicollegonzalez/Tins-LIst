@@ -1,8 +1,88 @@
+html {
+  height: 100%;
+}
+
 body {
-  padding: 50px;
+  height: 100%;
+  padding: 0;
+  margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+// a {
+//   color: #00B7FF;
+// }
+
+
+.all-the-listings-cotainer{
+  width: 80%;
+  height: 50%;
+}
+
+.listing-card img{
+  max-width: 100%;
+  max-height: 50%;
+}
+
+//LAYOUT STYLES
+#navigation.navbar-custom  {
+  // background-color: #5DA7CA;
+  color: #D6EBE1;
+  font-size: 1.5rem;
+  font-weight: 100;   
+}
+
+#navigation svg.svg-inline--fa.fa-bars.fa-w-14{
+  color: #D6EBE1;
+}
+
+#navigation a.nav-link{
+  color: #D6EBE1;
+}
+
+#navigation a.navbar-brand{
+  color: #E6463A
+}
+
+#navigation .nav-link:hover {
+  color: #E6463A;
+}
+
+// #mainNavbar {
+//   font-size: 1.5rem;
+//   font-weight: 100;    
+// }
+
+// #mainNavbar .nav-link {
+//   color: white;
+// }
+
+// #mainNavbar .nav-link:hover {
+//   color: #EA1C2C;
+// }
+
+// #mainNavbar .navbar-brand {
+//   color: #EA1C2C;
+//   font-size: 1.5rem;
+// }
+
+
+
+
+// LANDING PAGE STYLES
+
+#landing-page-container{
+  height: 100%;
+
+  padding: 0;
+  margin: 0;
+  background-image: url('../images/luca-upper-Z-4kOr93RCI-unsplash.jpg');
+  background-size: cover;
+  background-position: center center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
 }

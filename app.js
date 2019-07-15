@@ -23,6 +23,9 @@ const flash = require("connect-flash");
 //For Google Auth
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 
+//font awesome stuff
+require('./helpers');
+
 
 
 
@@ -63,7 +66,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator'; //CHANGEME
+app.locals.title = 'Tins List'; //CHANGEME
 
 
 
