@@ -55,9 +55,13 @@ router.post('/listings/create-new',uploadMagic.single('thePic'),(req, res, next)
 
   // let theTitle = req.body.theTitle;
   // let theDescription = req.body.theDescription;
-  const {theTitle, theDescription} = req.body;
+  const {theTitle, theDescription, thePrice} = req.body;
   const theAuthor  = req.user._id;
-  const theImg = req.file.url;
+  const theImg = "https://i.pinimg.com/236x/fc/7e/ce/fc7ece8e8ee1f5db97577a4622f33975--photo-icon-sad.jpg";
+  if(req.file !== undefined){
+    const theImg = req.file.url;
+  }
+  
   console.log(theTitle);
   console.log(theDescription);
   console.log(theAuthor);
@@ -67,6 +71,7 @@ router.post('/listings/create-new',uploadMagic.single('thePic'),(req, res, next)
       title: theTitle,
       image: theImg,
       description: theDescription,
+      price: thePrice,
       author: theAuthor
   })
   .then(()=>{
