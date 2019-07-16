@@ -9,6 +9,17 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+h3{
+  text-align: center;
+  font-size: 5vw;
+
+}
+@media screen and (min-width: 1000px) {
+  h3 {
+     font-size: 36px;
+  }
+}
+
 
 
 // .all-the-listings-cotainer{
@@ -16,9 +27,12 @@ body {
 //   height: 50%;
 // }
 
+
+
 .listing-card img{
   max-width: 100%;
-  max-height: 50%;
+  max-height: 400px;
+  // max-height: 50%;
 }
 
 //INDEX STYLES
@@ -101,16 +115,19 @@ body {
 #landing-page-container div.header{
   // background-color: rgba(222, 183, 135, 0.5);
   background-color: rgba(221,221,221,0.7);
-  width: 90%;
+  // background-color: rgba(97,171,203,0.8);
+  // background-color: rgba(0,0,0,0.5);
+  width: 70%;
   min-width: 200px;
   text-align: center;
   padding: 30px 0;
+  border-radius: 25px;
 }
 
 #landing-page-container h2{
   // font-family: 'Neuton', serif;
   font-family: 'DM Serif Display', serif;
-  font-size: 8vw;
+  font-size: 7vw;
   color: white;
   letter-spacing: 5px;
   font-weight: 800;
@@ -194,6 +211,7 @@ body {
 #navigation a.nav-link.ml-3.my-2.btn-custom:hover {
   border-color: #E6463A;
   // background: #5fafd0;
+  // transition: background 500ms;
 }
 
 
@@ -206,6 +224,16 @@ body {
   // padding-top: 40px;
   width: 80%;
   height: 50%;
+}
+
+.all-the-listings-cotainer{
+  // padding-top: 40px;
+  width: 80%;
+  height: 50%;
+}
+
+.description{
+  text-align: justify;
 }
 
 // @media (max-width: 992px) {
@@ -227,6 +255,8 @@ body {
 
 
 // .navbar.scrolled {
-//   background: #5fafd0;
-//   transition: background 500ms;
+//   // background: #5fafd0;
+//   display: none;
+//   transition: display 10000ms;
+  
 // }

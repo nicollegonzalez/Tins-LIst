@@ -1,0 +1,39 @@
+<div class="listing-card container">
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>{{this.title}}</h3> 
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <img src="{{this.image}}" alt="image of {{this.title}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                {{!-- Add link to user profile:Has old listing ratings and picture of user --}}
+                <p class="description">{{this.description}} <a href="#">by: {{this.author.username}}</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <strong><p>{{this.price}}</p></strong>
+                
+            </div>
+        </div>
+    </div>    
+
+
+    
+    {{!-- How we alow only authors of post to delete their post --}}
+    {{#if this.owned}}
+    {{!-- Add crud Edit listing here!!!!!! --}}
+    <form action="/listings/delete/{{this._id}}" method="POST"><button>Delete This Listing</button></form>
+    {{/if}}
+
+</div>
