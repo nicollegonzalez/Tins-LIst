@@ -14,7 +14,7 @@ body {
 #navigation-index.navbar-custom {
   background-color: rgba(97, 171, 203, 0.8);
   color: #D6EBE1;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 100;
   min-height: 96px; }
 
@@ -41,10 +41,27 @@ body {
 #navigation-index a.nav-link.mx-2.my-2 {
   width: 101.3px; }
 
+#navigation-index a.nav-link.ml-3.my-2.btn-custom {
+  width: 110px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  border-color: #D6EBE1; }
+
+#navigation-index a.nav-link.ml-3.my-2.btn-custom:hover {
+  border-color: #E6463A; }
+
 #landing-page-container {
   height: 100%;
   padding: 0;
   margin: 0;
+  background-color: #69B3D4;
   background-image: url("../images/luca-upper-Z-4kOr93RCI-unsplash.jpg");
   background-size: cover;
   background-position: center center;
@@ -54,18 +71,39 @@ body {
   align-items: center;
   justify-content: center; }
 
+#landing-page-container div.header {
+  background-color: rgba(221, 221, 221, 0.7);
+  width: 90%;
+  min-width: 200px;
+  text-align: center;
+  padding: 30px 0; }
+
+#landing-page-container h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 8vw;
+  color: white;
+  letter-spacing: 5px;
+  font-weight: 800;
+  line-height: 1.18;
+  text-shadow: 0px 4px 0px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1); }
+
+#landing-page-container div.button {
+  padding: 10px 0; }
+
+#landing-page-container a.btn.btn-light {
+  width: 235px; }
+
 #navigation.navbar-custom {
-  background-color: rgba(97, 171, 203, 0.8);
-  color: #D6EBE1;
-  font-size: 1.1rem;
+  color: #226C9B;
+  font-size: 1rem;
   font-weight: 100;
   min-height: 96px; }
 
 #navigation svg.svg-inline--fa.fa-bars.fa-w-14 {
-  color: #D6EBE1; }
+  color: #226C9B; }
 
 #navigation a.nav-link {
-  color: #D6EBE1; }
+  color: #226C9B; }
 
 #navigation a.navbar-brand {
   color: #E6463A; }
@@ -84,22 +122,21 @@ body {
 #navigation a.nav-link.mx-2.my-2 {
   width: 101.3px; }
 
-#landing-page-container {
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  background-image: url("../images/luca-upper-Z-4kOr93RCI-unsplash.jpg");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; }
+#navigation a.nav-link.ml-3.my-2.btn-custom {
+  width: 110px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  border-color: #226C9B; }
 
-#landing-page-container h2 {
-  font-family: 'Neuton', serif;
-  font-size: 10vw; }
+#navigation a.nav-link.ml-3.my-2.btn-custom:hover {
+  border-color: #E6463A; }
 
 .all-the-listings-cotainer {
   width: 80%;

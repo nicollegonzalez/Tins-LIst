@@ -3,7 +3,7 @@
   <head>
 
     <title>{{title}}</title>
-    <link href="https://fonts.googleapis.com/css?family=Neuton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=DM+Serif+Display|DM+Serif+Text|Neuton&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
       {{fontawesome-css}}
@@ -36,17 +36,17 @@
             <a class="nav-link ml-2 my-2" href="/listings/add-new">Create Listing</a>
           </li>
         </ul>
-         <form class="form-inline">
-		    	<ul class="navbar-nav mr-auto">
+        <form class="form-inline">
+          <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link ml-2 my-2" href="/login">Log in {{fontawesome-icon icon="user"}}  </a>
+              <a class="nav-link ml-3 my-2 btn-custom" href="/login">Log in {{fontawesome-icon icon="user"}}  </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link ml-2 my-2" href="/signup">Sign up {{fontawesome-icon icon="user-plus"}}  </a>
+              <a class="nav-link ml-3 my-2 btn-custom" href="/signup">Sign up {{fontawesome-icon icon="user-plus"}}  </a>
             </li>
             <li class="nav-item">
               <form action="/logout" method="POST">
-                <a class="nav-link ml-2 my-2" href="/logout">Log out {{fontawesome-icon icon="sign-out-alt"}}  </a>
+                <a class="nav-link ml-3 my-2 btn-custom" href="/logout">Log out {{fontawesome-icon icon="sign-out-alt"}}  </a>
               </form>
             </li>
         </ul>
@@ -66,13 +66,20 @@
       {{!-- <h1>{{title}}</h1>
       <p>Welcome to {{title}}</p> --}}
       
-      <div class="header conatiner">
-        <h2>Life's too short to be hording.</h2>
+      <div class="header">
+        {{!-- <h2>Life's too short to be hording.</h2> --}}
+        <h2>Single is a terrible thing to waste.</h2>
         {{!-- <h2>You may think somthing is too great to let go, but sometimes greater things can only happen after you let go.</h2> --}}
-        <div class="button">
-          <a class="btn btn-light " href="/signup">Sign up with Email! {{fontawesome-icon icon="user-plus"}}</a>
-          <a class="btn btn-light"href="/auth/google">Continue With Google</a> 
-        </div>
+        {{!-- <div class="button"> --}}
+          <div class="button">
+            <a class="btn btn-light " href="/signup">{{fontawesome-icon icon="envelope"}} Sign up with Email!</a>
+          </div>
+          <div >
+            {{!-- <img src="../public/images/yanko-peyankov-ge256Z4s_jk-unsplash.jpg" alt="google-icon" height="25px" width="25px"> --}}
+            <a class="btn btn-light"href="/auth/google"><img src="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png" alt="google-icon" height="20px" width="20px"> Continue With Google</a> 
+          </div>
+          
+        {{!-- </div> --}}
        
 
 
