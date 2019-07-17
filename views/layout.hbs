@@ -43,8 +43,11 @@
               <a class="nav-link ml-3 my-2 btn-custom" href="/signup">Sign up {{fontawesome-icon icon="user-plus"}}  </a>
             </li>
             <li class="nav-item">
+              {{!-- <form action="/logout" method="POST">
+                <a class="nav-link ml-3 my-2 btn-custom">Log out {{fontawesome-icon icon="sign-out-alt"}}  </a>
+              </form> --}}
               <form action="/logout" method="POST">
-                <a class="nav-link ml-3 my-2 btn-custom" href="/logout">Log out {{fontawesome-icon icon="sign-out-alt"}}  </a>
+                <button class="nav-link ml-3 my-2 btn-custom">Log out {{fontawesome-icon icon="sign-out-alt"}}</button>
               </form>
             </li>
         </ul>
@@ -54,10 +57,10 @@
     </nav>
 
 
-
-      {{#if msg}}
+      {{!-- These are error messages --}}
+      {{!-- {{#if msg}}
       {{msg}}
-      {{/if}}
+      {{/if}} --}}
 
     {{{body}}}
 

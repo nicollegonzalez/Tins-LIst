@@ -10,7 +10,7 @@
     
     <div class="container">
         <div class="row">
-            <div class="col d-flex justify-content-center">
+            <div class="col d-flex justify-content-center image">
                 <img src="{{this.image}}" alt="image of {{this.title}}">
             </div>
         </div>
@@ -22,14 +22,14 @@
         </div>
         <div class="row">
             <div class="col d-flex justify-content-center">
-                <strong><p>{{this.price}}</p></strong>
+                <p><strong><p>{{this.price}}</p></strong></p>
                 
             </div>
         </div>
     </div>    
 
 
-    
+
     {{!-- How we alow only authors of post to delete their post --}}
     {{#if this.owned}}
     {{!-- Add crud Edit listing here!!!!!! --}}

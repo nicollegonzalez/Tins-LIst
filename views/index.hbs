@@ -45,11 +45,14 @@
               <a class="nav-link ml-3 my-2 btn-custom" href="/signup">Sign up {{fontawesome-icon icon="user-plus"}}  </a>
             </li>
             <li class="nav-item">
+              {{!-- <form action="/logout" method="POST">
+                <a class="nav-link ml-3 my-2 btn-custom">Log out {{fontawesome-icon icon="sign-out-alt"}}  </a>
+              </form> --}}
               <form action="/logout" method="POST">
-                <a class="nav-link ml-3 my-2 btn-custom" href="/logout">Log out {{fontawesome-icon icon="sign-out-alt"}}  </a>
+                <button class="nav-link ml-3 my-2 btn-custom">Log out {{fontawesome-icon icon="sign-out-alt"}}</button>
               </form>
             </li>
-        </ul>
+          </ul>
         </form>
       </div>
     
@@ -76,12 +79,9 @@
           </div>
           <div >
             <a class="btn btn-light"href="/auth/google"><img src="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png" alt="google-icon" height="20px" width="20px"> Continue With Google</a> 
+            {{!-- <a class="btn btn-light"href="/auth/google"><img src="" alt="google-icon" height="20px" width="20px"> Continue With Google</a>  --}}
           </div>
           
-
-
-
-        
       </div>
 
     </div>

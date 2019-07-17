@@ -1,17 +1,22 @@
+<div class="user-login container">
+  <h2>Login</h2>
+  <div class="messages">{{#if msg}}
+      {{msg}}
+      {{/if}}
+  </div>
+  <form action="/login" method="POST">
+    <label>Your Username</label>
+    <input type="text" name="username">
+    <label>Password</label>
+    <input type="text" name="password">
 
-<h2>Login</h2>
-<form action="/login" method="POST">
-  <label>Your Username</label>
-  <input type="text" name="username">
-  <label>Password</label>
-  <input type="text" name="password">
+
+    <button>Save</button>
+
+  </form>
 
 
-  <button>Save</button>
-
-</form>
-
-
-<div>
-  <a href="/auth/google">Log In With Google</a> 
+  <div>
+    <a href="/auth/google">Log In With Google</a> 
+  </div>
 </div>

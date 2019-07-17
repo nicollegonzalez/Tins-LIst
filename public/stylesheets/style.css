@@ -38,6 +38,9 @@ h3 {
 #navigation-index .nav-link:hover {
   color: #E6463A; }
 
+#navigation-index button.nav-link:hover {
+  color: #E6463A; }
+
 #navigation-index .navbar-brand {
   color: #EA1C2C;
   font-size: 2rem;
@@ -65,6 +68,24 @@ h3 {
 #navigation-index a.nav-link.ml-3.my-2.btn-custom:hover {
   border-color: #E6463A; }
 
+#navigation-index button.nav-link.ml-3.my-2.btn-custom {
+  width: 110px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  border-color: #D6EBE1;
+  color: #D6EBE1; }
+
+#navigation-index button.nav-link.ml-3.my-2.btn-custom:hover {
+  border-color: #E6463A;
+  color: #E6463A; }
+
 #landing-page-container {
   height: 100%;
   padding: 0;
@@ -85,7 +106,8 @@ h3 {
   min-width: 200px;
   text-align: center;
   padding: 30px 0;
-  border-radius: 25px; }
+  border-radius: 25px;
+  box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.1), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1); }
 
 #landing-page-container h2 {
   font-family: 'DM Serif Display', serif;
@@ -93,14 +115,22 @@ h3 {
   color: white;
   letter-spacing: 5px;
   font-weight: 800;
-  line-height: 1.18;
-  text-shadow: 0px 4px 0px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1); }
+  line-height: 1.18; }
 
 #landing-page-container div.button {
   padding: 10px 0; }
 
+@media (max-width: 991px) {
+  #navigation-index a.nav-link {
+    padding-left: 50px; }
+  #navigation-index a.nav-link.ml-3.my-2.btn-custom {
+    margin-left: 50px !important; }
+  #navigation-index button.nav-link.ml-3.my-2.btn-custom {
+    margin-left: 50px !important; } }
+
 #landing-page-container a.btn.btn-light {
-  width: 235px; }
+  width: 235px;
+  box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.1), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1); }
 
 #navigation.navbar-custom {
   color: #226C9B;
@@ -118,6 +148,9 @@ h3 {
   color: #E6463A; }
 
 #navigation .nav-link:hover {
+  color: #E6463A; }
+
+#navigation button.nav-link:hover {
   color: #E6463A; }
 
 #navigation .navbar-brand {
@@ -146,6 +179,32 @@ h3 {
 
 #navigation a.nav-link.ml-3.my-2.btn-custom:hover {
   border-color: #E6463A; }
+
+#navigation button.nav-link.ml-3.my-2.btn-custom {
+  width: 110px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  border-color: #226C9B;
+  color: #226C9B; }
+
+#navigation button.nav-link.ml-3.my-2.btn-custom:hover {
+  border-color: #E6463A;
+  color: #E6463A; }
+
+@media (max-width: 991px) {
+  #navigation a.nav-link {
+    padding-left: 50px; }
+  #navigation a.nav-link.ml-3.my-2.btn-custom {
+    margin-left: 50px !important; }
+  #navigation button.nav-link.ml-3.my-2.btn-custom {
+    margin-left: 50px !important; } }
 
 .all-the-listings-cotainer {
   width: 80%;
