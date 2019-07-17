@@ -34,7 +34,7 @@
             <a class="nav-link ml-2 my-2" href="/listings/add-new">Create Listing</a>
           </li>
         </ul>
-        <form class="form-inline">
+        <div class="form-inline">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link ml-3 my-2 btn-custom" href="/login">Log in {{fontawesome-icon icon="user"}}  </a>
@@ -46,12 +46,15 @@
               {{!-- <form action="/logout" method="POST">
                 <a class="nav-link ml-3 my-2 btn-custom">Log out {{fontawesome-icon icon="sign-out-alt"}}  </a>
               </form> --}}
-              <form action="/logout" method="POST">
+              {{!-- <form action="/logout" method="POST">
                  <button class="nav-link ml-3 my-2 btn-custom">Log out {{fontawesome-icon icon="sign-out-alt"}}</button>
+              </form> --}}
+              <form action="/logout" method="get">
+                <button type="submit" class="nav-link ml-3 my-2 btn-custom">Log out {{fontawesome-icon icon="sign-out-alt"}}</button>
               </form>
             </li>
         </ul>
-        </form>
+        </div>
       </div>
     
     </nav>

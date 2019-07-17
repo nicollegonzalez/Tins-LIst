@@ -83,7 +83,7 @@ router.post("/login", passport.authenticate("local", {
   passReqToCallback: true
 }));
 
-router.post('/logout', (req, res, next)=>{
+router.get('/logout', (req, res, next)=>{
   req.logout()
   res.redirect("/login")
 })
