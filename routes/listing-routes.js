@@ -118,13 +118,30 @@ router.post('/listings/delete/:idOfListing', (req, res, next)=>{
 /*Edit Listing*/
 router.get('/listings/edit/:id', (req, res, next)=>{
   Listing.findById(req.params.id)
-  .then((allTheListings)=>{
-          res.render('listing-views/edit-listing', {listings: allTheListings})
+  .then((theListing)=>{
+          res.render('listing-views/edit-listing', {listing: theListing})
   })
   .catch((err)=>{
       next(err);
   })
 })
+
+
+// router.post('/listings/update/:listingID', (req, res, next)=>{
+//   let theID = req.params.listingID;
+//   Listing.findByIdAndUpdate(theID, req.body)
+//   .then((listing)=>{
+//     console.log("It worked")
+//     console.log(theID)
+//     // console.log("KJHKJHKJHLKJHLKJHKLJHLKHKLJH")
+//     console.log(req.body)
+//       res.redirect('/listing-views/listing-details/'+theID)
+//   })
+//   .catch((err)=>{
+//     console.log("didnt work :(")
+//       next(err);
+//   })
+// })
 
 
 router.post('/listings/update/:listingID', (req, res, next)=>{
@@ -133,7 +150,6 @@ router.post('/listings/update/:listingID', (req, res, next)=>{
   .then((listing)=>{
     console.log("It worked")
     console.log(theID)
-    // console.log("KJHKJHKJHLKJHLKJHKLJHLKHKLJH")
     console.log(req.body)
       res.redirect('/listing-views/listing-details/'+theID)
   })
