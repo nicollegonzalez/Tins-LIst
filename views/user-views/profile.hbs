@@ -1,4 +1,35 @@
 <h1>this is the Profile page</h1>
 
+<div class="user-profile-container container">
+  <div class="row">
+    <div class="user-listings col">
+      <h5>{{listings.[0].author.username}} Active Listings:</h5>
+        {{#each listings}}
+          {{#if this.owned}}
+            <h6><a href="/listing-views/details/{{this._id}}">{{this.title}}</a></h6>
+            
+          {{/if}}
+        {{/each}}
+    </div>
+
+    {{!-- If I have time add inactive listings --}}
+    {{!-- <div class="user-inactive-listings col">
+      <h5>{{listings.[0].author.username}} Inactive Listings:</h5>
+        {{#each listings}}
+          {{#if this.owned}}
+            <h6><a href="">{{this.title}}</a></h6>
+          {{/if}}
+        {{/each}}
+    </div> --}}
+  </div>
+</div>
+
+
+
+
+
+
+
+
 
 <h3>you can only see this if you're logged in</h3>

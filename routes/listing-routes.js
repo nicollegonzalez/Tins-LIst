@@ -34,6 +34,23 @@ router.get('/listings', (req, res, next)=>{
 
 
 
+router.get('/listing-views/details/:id', (req,res,next)=>{
+
+  let theId = req.params.id;
+  Listing.findById(theId)
+  .then((oneSingleListing)=>{
+    console.log(oneSingleListing);
+    res.render('listing-views/listing-details', {theListing: 
+      oneSingleListing})
+  })
+  .catch((err)=>{
+    next(err);
+  })
+})
+
+
+
+
 
 router.get('/listings/add-new', (req, res, next)=>{
 
@@ -49,7 +66,7 @@ router.get('/listings/add-new', (req, res, next)=>{
 })
 
 
-// router.post('/celebrities/create-new-celebrity',uploadMagic.single('thePic'),(req,res,next)=>{
+
 router.post('/listings/create-new',uploadMagic.single('thePic'),(req, res, next)=>{
 // router.post('/listings/create-new',(req, res, next)=>{
 
@@ -97,6 +114,40 @@ router.post('/listings/delete/:idOfListing', (req, res, next)=>{
   })
 
 })
+
+/*Edit Listing*/
+router.get('/listings/edit/:id', (req, res, next)=>{
+  Listing.findById(req.params.id)
+  .then((allTheListings)=>{
+          res.render('listing-views/edit-listing', {listings: allTheListings})
+  })
+  .catch((err)=>{
+      next(err);
+  })
+})
+
+
+router.post('/listings/update/:listingID', (req, res, next)=>{
+  let theID = req.params.listingID;
+  Listing.findByIdAndUpdate(theID, req.body)
+  .then((listing)=>{
+    console.log("It worked")
+    console.log(theID)
+    // console.log("KJHKJHKJHLKJHLKJHKLJHLKHKLJH")
+    console.log(req.body)
+      res.redirect('/listing-views/listing-details/'+theID)
+  })
+  .catch((err)=>{
+    console.log("didnt work :(")
+      next(err);
+  })
+})
+
+
+
+
+
+
 
 
 module.exports = router;

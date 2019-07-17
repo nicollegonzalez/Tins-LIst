@@ -2,6 +2,7 @@ const express = require('express');
 const router  = express.Router();
 const bcrypt  = require('bcryptjs');
 const User    = require('../models/User');
+const Listing    = require('../models/Listing');
 const passport = require('passport');
 const LocalStrategy = require("passport-local").Strategy;
 
@@ -108,9 +109,31 @@ router.get('/profile',(req, res, next)=>{
     res.redirect('/login')
   }
   else(
-    res.render('user-views/profile')
+    // res.render('user-views/profile')
+    Listing.find().populate('author')
+    .then((allTheListings)=>{
+      console.log("******", allTheListings);
+
+      allTheListings.forEach((eachListing)=>{
+        console.log('its a listing')
+  
+          if(eachListing.author._id.equals(req.user._id)){
+              eachListing.owned = true;
+          }
+  
+      })
+
+      res.render('user-views/profile', {listings: allTheListings})
+    })
+    .catch((err)=>{
+      next(err);
+    })
   )  
 })
+
+
+
+
 
 
 module.exports = router;

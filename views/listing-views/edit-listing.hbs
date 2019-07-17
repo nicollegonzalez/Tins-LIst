@@ -1,0 +1,24 @@
+<h2>Edit Listing {{listing.title}}</h2>
+
+
+{{!-- <form action="/listings/create-new" method="POST"> --}}
+<form action="/listings/update/{{celebrity._id}}" method="POST" enctype="multipart/form-data">
+
+  <p>Title Of Listing:</p>
+  <input type="text" name="theTitle">
+
+
+  <label>Image:</label>
+  <input type="file" name="thePic">
+
+
+  <p>Description of listing</p>
+  <textarea name="theDescription" cols="40" rows="20" maxlength="500"></textarea>
+
+  <p>Price Of Listing</p>
+  <input type="text" name="thePrice">
+
+
+  <button>Save Changes</button>
+
+</form> 
