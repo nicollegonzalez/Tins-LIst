@@ -1,9 +1,12 @@
+{{!-- Update this Feed page --}}
+
+
 <div class="listing-card container">
 
     <div class="container">
         <div class="row">
             <div class="col">
-                <h3>{{theListing.title}}</h3> 
+                <h3>{{listings.[0].title}}</h3> 
             </div>
         </div>
     </div>
@@ -11,28 +14,27 @@
     <div class="container">
         <div class="row">
             <div class="col d-flex justify-content-center image">
-                <img src="{{theListing.image}}" alt="image of {{theListing.title}}">
+                <img src="{{listings.[0].image}}" alt="image of {{listings.[0].title}}">
             </div>
         </div>
         <div class="row">
             <div class="col d-flex justify-content-center">
                 {{!-- Add link to user profile:Has old listing ratings and picture of user --}}
-                <p class="description">{{theListing.description}} <a href="#">by: {{theListing.author.username}}</a></p>
+                <p class="description">{{listings.[0].description}} <a href="#">by: {{listings.[0].author.username}}</a></p>
             </div>
         </div>
         <div class="row">
             <div class="col d-flex justify-content-center">
-                <p><strong><p>{{theListing.price}}</p></strong></p>
+                <p><strong><p>{{listings.[0].price}}</p></strong></p>
                 {{!-- How we alow only authors of post to delete their post --}}
-                
             </div>
         </div>
         <div class="row">
-           <div class="col d-flex justify-content-center">
-              {{#if theListing.owned}}
-                  <button class="btn"><a href="/listings/edit/{{theListing._id}}">Edit {{theListing.name}}</a></button>
-                  <form action="/listings/delete/{{this._id}}" method="POST"><button class="btn">Delete</button></form>
-              {{/if}}
+            <div class="col d-flex justify-content-center">
+                {{#if listings.[0].owned}}
+                <button class="btn"><a href="/listings/edit/{{listings.[0]._id}}">Edit {{listings.[0].name}}</a></button>
+                <form action="/listings/delete/{{listings.[0]._id}}" method="POST"><button class="btn">Delete</button></form>
+                {{/if}}
             </div>
         </div>
     </div>    
@@ -41,3 +43,4 @@
 
 
 </div>
+

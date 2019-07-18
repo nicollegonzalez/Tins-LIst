@@ -40,7 +40,10 @@ router.post('/signup', (req, res, next)=>{
       User.create({
         username: theUsername,
         password: hashedPassWord,
-        email: email
+        email: email,
+        leftListings: [],
+        rigthListings: []
+
       })
       .then((user)=>{
           // console.log('yay created a new user');
@@ -182,6 +185,40 @@ router.post('/user/update/:userID',uploadMagic.single('theUserPic'),(req, res, n
       next(err);
   })
 })
+
+
+
+/*User Personalized Feed */
+router.get('/feed', (req, res, next)=>{
+
+  Listing.find().populate('author')
+  .then((allTheListings)=>{
+    // console.log("*****1",allTheListings[0],"*****1");
+    allTheListings.reverse();
+    // console.log("*****last",allTheListings[0],"*****last");
+    
+
+    //checking if user already exist 
+    if(req.user){
+    // Change forEach into a for loop going in reverse to display newest listings
+    allTheListings.forEach((eachListing)=>{
+      console.log('its a listing');
+
+        if(eachListing.author._id.equals(req.user._id)){
+            eachListing.owned = true;
+        }
+
+    })
+
+    }
+
+    res.render('user-views/feed', {listings: allTheListings})
+  })
+  .catch((err)=>{
+      next(err)
+  })
+})
+
 
 
 

@@ -6,7 +6,10 @@ const userSchema = new Schema ({
   password: {type: String},
   googleID: String,
   email: String,
-  image: String
+  image: String,
+  // activeListings: Array,
+  leftListings: Array,
+  rigthListings: Array
 
 })
 

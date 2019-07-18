@@ -11,6 +11,7 @@ router.get('/listings', (req, res, next)=>{
 
   Listing.find().populate('author')
   .then((allTheListings)=>{
+    allTheListings.reverse();
     //checking if user already exist 
     if(req.user){
     
@@ -40,6 +41,18 @@ router.get('/listing-views/details/:id', (req,res,next)=>{
   Listing.findById(theId)
   .then((oneSingleListing)=>{
     console.log(oneSingleListing);
+    console.log(req.user);
+
+    if(req.user){
+      if(oneSingleListing.author._id.equals(req.user._id)){
+        console.log("ownedddddd")
+        oneSingleListing.owned = true;
+      }
+    }
+    
+      
+
+
     res.render('listing-views/listing-details', {theListing: 
       oneSingleListing})
   })
@@ -47,6 +60,8 @@ router.get('/listing-views/details/:id', (req,res,next)=>{
     next(err);
   })
 })
+
+
 
 
 
@@ -150,3 +165,6 @@ router.post('/listings/update/:listingID',uploadMagic.single('thePic'),(req, res
 
 
 module.exports = router;
+
+
+
