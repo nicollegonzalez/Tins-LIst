@@ -126,31 +126,14 @@ router.get('/listings/edit/:id', (req, res, next)=>{
   })
 })
 
-
-// router.post('/listings/update/:listingID', (req, res, next)=>{
-//   let theID = req.params.listingID;
-//   Listing.findByIdAndUpdate(theID, req.body)
-//   .then((listing)=>{
-//     console.log("It worked")
-//     console.log(theID)
-//     // console.log("KJHKJHKJHLKJHLKJHKLJHLKHKLJH")
-//     console.log(req.body)
-//       res.redirect('/listing-views/listing-details/'+theID)
-//   })
-//   .catch((err)=>{
-//     console.log("didnt work :(")
-//       next(err);
-//   })
-// })
-
-
-router.post('/listings/update/:listingID', (req, res, next)=>{
+router.post('/listings/update/:listingID',uploadMagic.single('thePic'),(req, res, next)=>{
   let theID = req.params.listingID;
-  console.log("*******",theID);
+  console.log('------',req.body);
+  // console.log("*******",theID);
   Listing.findByIdAndUpdate(theID, req.body)
   .then((listing)=>{
-    console.log("It worked")
-    console.log(theID)
+    console.log("It worked");
+    console.log(theID);
       res.redirect('/listing-views/details/'+theID)
   })
   .catch((err)=>{

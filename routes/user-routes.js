@@ -6,6 +6,8 @@ const Listing    = require('../models/Listing');
 const passport = require('passport');
 const LocalStrategy = require("passport-local").Strategy;
 
+const uploadMagic = require('../config/cloundinary-setup');
+
 
 
 router.get('/signup', (req, res, next)=>{
@@ -110,26 +112,79 @@ router.get('/profile',(req, res, next)=>{
   }
   else(
     // res.render('user-views/profile')
-    Listing.find().populate('author')
+    User.find()
     .then((allTheListings)=>{
-      console.log("******", allTheListings);
-
-      allTheListings.forEach((eachListing)=>{
-        console.log('its a listing')
-  
+      // console.log(req.user)
+      Listing.find().populate('author')
+      .then((allTheListings)=>{
+        // console.log("******", allTheListings);
+        allTheListings.forEach((eachListing)=>{
+          // console.log('its a listing')
+          // console.log('asdasdasdasdasdasdasdasdadsasdasd')
+          // console.log(req.user)
           if(eachListing.author._id.equals(req.user._id)){
-              eachListing.owned = true;
+            eachListing.owned = true;
           }
-  
+        })
+        res.render('user-views/profile', {listings: allTheListings, user: req.user})
       })
-
-      res.render('user-views/profile', {listings: allTheListings})
+      .catch((err)=>{
+        next(err);
     })
     .catch((err)=>{
       next(err);
     })
-  )  
+  })
+    )
 })
+
+
+
+// //Delete User
+
+// router.post('/user/delete/:idOfUser', (req, res, next)=>{
+//   Listing.findByIdAndRemove(req.params.idOfUser)
+//   .then(()=>{
+//       req.flash('error', 'LISTING SUCCESSFULLY DELETED!')
+//       res.redirect('/listings')
+//   })
+//   .catch((err)=>{
+//       next(err)
+//   })
+
+// })
+
+
+
+/*Edit User*/
+router.get('/user/edit/:id', (req, res, next)=>{
+  User.findById(req.params.id)
+  .then((theUser)=>{
+          res.render('user-views/edit-user-profile', {user: theUser})
+  })
+  .catch((err)=>{
+      next(err);
+  })
+})
+
+router.post('/user/update/:userID',uploadMagic.single('theUserPic'),(req, res, next)=>{
+  let theID = req.params.userID;
+  console.log('------',req.body);
+  // console.log("*******",theID);
+  User.findByIdAndUpdate(theID, req.body)
+  .then((listing)=>{
+    console.log("It worked");
+    console.log(theID);
+      res.redirect('/profile')
+  })
+  .catch((err)=>{
+    console.log("didnt work :(")
+      next(err);
+  })
+})
+
+
+
 
 
 

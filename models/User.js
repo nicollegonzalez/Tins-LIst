@@ -5,11 +5,11 @@ const userSchema = new Schema ({
   username: {type: String, unique: true},
   password: {type: String},
   googleID: String,
-  email: String
+  email: String,
+  image: String
 
 })
 
 const UserModel = mongoose.model('User', userSchema);
 
 module.exports = UserModel;
-

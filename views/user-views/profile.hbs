@@ -1,9 +1,10 @@
 <h1>this is the Profile page</h1>
-
+<button class="btn"><a href="/user/edit/{{user._id}}">Edit {{user.username}} Profile</a></button>
+                            
 <div class="user-profile-container container">
   <div class="row">
     <div class="user-listings col">
-      <h5>{{listings.[0].author.username}} Active Listings:</h5>
+      <h5>{{user.username}} Active Listings:</h5>
         {{#each listings}}
           {{#if this.owned}}
             <h6><a href="/listing-views/details/{{this._id}}">{{this.title}}</a></h6>
