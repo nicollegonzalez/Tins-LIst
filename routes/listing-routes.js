@@ -35,22 +35,26 @@ router.get('/listings', (req, res, next)=>{
 
 
 
+
+
 router.get('/listing-views/details/:id', (req,res,next)=>{
 
   let theId = req.params.id;
-  Listing.findById(theId)
+  Listing.findById(theId).populate('author')
   .then((oneSingleListing)=>{
-    console.log(oneSingleListing);
-    console.log(req.user);
+    // console.log(oneSingleListing);
+    // console.log(req.user);
 
     if(req.user){
       if(oneSingleListing.author._id.equals(req.user._id)){
-        console.log("ownedddddd")
+        // console.log("ownedddddd")
         oneSingleListing.owned = true;
+        res.render('listing-views/listing-details', {theListing: 
+          oneSingleListing})
       }
     }
     
-      
+    
 
 
     res.render('listing-views/listing-details', {theListing: 
@@ -70,7 +74,7 @@ router.get('/listing-views/details/:id', (req,res,next)=>{
 router.get('/listings/add-new', (req, res, next)=>{
 
   if(!req.user){
-      req.flash('error', 'must be logged in to make listings')
+      req.flash('error', 'You must be logged in to create a new listings')
       res.redirect('/login')
   }
   else{
@@ -141,11 +145,34 @@ router.get('/listings/edit/:id', (req, res, next)=>{
   })
 })
 
+
+
+// if(req.file !== undefined){
+//   theImg = req.file.url;
+// }
+
+// const {theTitle, theDescription, thePrice} = req.body;
+//   let theImg = "https://i.pinimg.com/236x/fc/7e/ce/fc7ece8e8ee1f5db97577a4622f33975--photo-icon-sad.jpg";
+//   if(req.file !== undefined){
+//     theImg = req.file.url;
+//   }
+
+
 router.post('/listings/update/:listingID',uploadMagic.single('thePic'),(req, res, next)=>{
   let theID = req.params.listingID;
+  if(req.file !== undefined){
+    theImg = req.file.url;
+  }
+
+
+
+
+
   console.log('------',req.body);
+  console.log("******",req.file);
+  
   // console.log("*******",theID);
-  Listing.findByIdAndUpdate(theID, req.body)
+  Listing.findByIdAndUpdate(theID, req.body, req.file)
   .then((listing)=>{
     console.log("It worked");
     console.log(theID);

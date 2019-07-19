@@ -3,7 +3,8 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h3>{{this.title}}</h3> 
+                <h3><a href="/listing-views/details/{{this._id}}">{{this.title}}</a></h3>
+                {{!-- <h3>{{this.title}}</h3>  --}}
             </div>
         </div>
     </div>
@@ -33,7 +34,7 @@
     {{!-- How we alow only authors of post to delete their post --}}
     {{#if this.owned}}
     {{!-- Add crud Edit listing here!!!!!! --}}
-    <form action="/listings/delete/{{this._id}}" method="POST"><button>Delete This Listing</button></form>
+    <form action="/listings/delete/{{this._id}}" method="POST"><button class="btn btn-danger">Delete This Listing</button></form>
     {{/if}}
 
 </div>

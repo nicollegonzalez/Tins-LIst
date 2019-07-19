@@ -28,11 +28,17 @@
             </div>
         </div>
         <div class="row">
-           <div class="col d-flex justify-content-center">
-              {{#if theListing.owned}}
-                  <button class="btn"><a href="/listings/edit/{{theListing._id}}">Edit {{theListing.name}}</a></button>
-                  <form action="/listings/delete/{{this._id}}" method="POST"><button class="btn">Delete</button></form>
-              {{/if}}
+            <div class="col d-flex justify-content-center">
+                {{#if theListing.owned}}
+                    <button class="btn btn-outline-primary"><a href="/listings/edit/{{theListing._id}}">Edit {{theListing.name}}</a></button>
+                    {{!-- <form action="/listings/delete/{{this._id}}" method="POST"><button class="btn">Delete</button></form> --}}
+                    <form action="/listings/delete/{{theListing._id}}" method="POST"><button class="btn btn-outline-danger">Delete This Listing</button></form>
+
+                {{else}}
+                    {{#if currentUser}}
+                    <p class="description">Contact via email: {{theListing.author.email}}</p>
+                    {{/if}}
+                {{/if}}
             </div>
         </div>
     </div>    

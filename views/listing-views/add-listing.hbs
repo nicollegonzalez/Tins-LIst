@@ -1,24 +1,38 @@
-<h2>New Listing</h2>
+<div class="new-listing-container container">
+  <h2>New Listing</h2>
+  {{!-- <form action="/listings/create-new" method="POST"> --}}
+  <form action="/listings/create-new" method="POST" enctype="multipart/form-data">
+
+    <div>
+      <span>Title Of Listing:</span>
+    <input type="text" name="theTitle">
+    </div>
+    
+
+    <div>
+      <label>Image:</label>
+    <input type="file" name="thePic">
+    </div>
+    
+
+    <div>
+      <p>Description of listing:</p>
+    <textarea name="theDescription" cols="40" rows="20" maxlength="500"></textarea>
+    </div>
+    
+    <div>
+      <span>Price Of Listing:</span>
+    <input type="text" name="thePrice">
+    </div>
+    
 
 
-{{!-- <form action="/listings/create-new" method="POST"> --}}
-<form action="/listings/create-new" method="POST" enctype="multipart/form-data">
+    <button class="btn btn-light">Submit Listing</button>
 
-  <p>Title Of Listing:</p>
-  <input type="text" name="theTitle">
-
-
-  <label>Image:</label>
-  <input type="file" name="thePic">
+  </form> 
+</div>
 
 
-  <p>Description of listing</p>
-  <textarea name="theDescription" cols="40" rows="20" maxlength="500"></textarea>
-
-  <p>Price Of Listing</p>
-  <input type="text" name="thePrice">
 
 
-  <button>Submit Listing</button>
 
-</form> 

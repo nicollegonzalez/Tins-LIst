@@ -1,7 +1,18 @@
 {{!-- Update this Feed page --}}
 
 
-<div class="listing-card container">
+
+<div>
+    {{this}}
+</div>
+
+
+
+
+
+
+
+<div class="feed-container listing-card container">
 
     <div class="container">
         <div class="row">
@@ -29,14 +40,25 @@
                 {{!-- How we alow only authors of post to delete their post --}}
             </div>
         </div>
-        <div class="row">
+        {{!-- <div class="row">
             <div class="col d-flex justify-content-center">
                 {{#if listings.[0].owned}}
                 <button class="btn"><a href="/listings/edit/{{listings.[0]._id}}">Edit {{listings.[0].name}}</a></button>
                 <form action="/listings/delete/{{listings.[0]._id}}" method="POST"><button class="btn">Delete</button></form>
                 {{/if}}
             </div>
+        </div> --}}
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <form action="/delete" method="post">
+                    <button class="left-btn btn">{{fontawesome-icon icon="times"}} </button>
+                </form>
+                <form action="/like" method="post">
+                    <button class="right-btn btn">{{fontawesome-icon icon="heart"}} </button>
+                </form>
+            </div>
         </div>
+
     </div>    
 
 

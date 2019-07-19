@@ -7,7 +7,7 @@ const userSchema = new Schema ({
   googleID: String,
   email: String,
   image: String,
-  // activeListings: Array,
+  activeListings: Array,
   leftListings: Array,
   rigthListings: Array
 

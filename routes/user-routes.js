@@ -110,7 +110,7 @@ router.get("/auth/google/callback", passport.authenticate("google", {
 //Profiles route
 router.get('/profile',(req, res, next)=>{
   if(!req.user){
-    req.flash('error', "you must be logged in to view the top secret profile page")
+    req.flash('error', "You must be logged in to view your profile page")
     res.redirect('/login')
   }
   else(
@@ -133,12 +133,12 @@ router.get('/profile',(req, res, next)=>{
       })
       .catch((err)=>{
         next(err);
+      })
     })
     .catch((err)=>{
       next(err);
     })
-  })
-    )
+  )
 })
 
 
@@ -174,7 +174,7 @@ router.post('/user/update/:userID',uploadMagic.single('theUserPic'),(req, res, n
   let theID = req.params.userID;
   console.log('------',req.body);
   // console.log("*******",theID);
-  User.findByIdAndUpdate(theID, req.body)
+  User.findByIdAndUpdate(theID, req.body, req.file)
   .then((listing)=>{
     console.log("It worked");
     console.log(theID);
@@ -191,34 +191,165 @@ router.post('/user/update/:userID',uploadMagic.single('theUserPic'),(req, res, n
 /*User Personalized Feed */
 router.get('/feed', (req, res, next)=>{
 
+  // Listing.find().populate('author')
+  // .then((allTheListings)=>{
+  //   // console.log("*****1",allTheListings[0],"*****1");
+  //   allTheListings.reverse();
+  //   // console.log("*****last",allTheListings[0],"*****last");
+    
+
+  //   //checking if user already exist 
+  //   if(req.user){
+  //   // Change forEach into a for loop going in reverse to display newest listings
+  //   allTheListings.forEach((eachListing)=>{
+  //     console.log('its a listing');
+
+  //       if(eachListing.author._id.equals(req.user._id)){
+  //           eachListing.owned = true;
+  //       }
+
+  //   })
+
+  //   }
+
+  //   res.render('user-views/feed', {listings: allTheListings})
+  // })
+  // .catch((err)=>{
+  //     next(err)
+  // })
+
+
   Listing.find().populate('author')
   .then((allTheListings)=>{
     // console.log("*****1",allTheListings[0],"*****1");
     allTheListings.reverse();
     // console.log("*****last",allTheListings[0],"*****last");
     
+    let allTheListingsIDs = [];
 
-    //checking if user already exist 
-    if(req.user){
-    // Change forEach into a for loop going in reverse to display newest listings
     allTheListings.forEach((eachListing)=>{
-      console.log('its a listing');
-
-        if(eachListing.author._id.equals(req.user._id)){
-            eachListing.owned = true;
-        }
-
+      allTheListingsIDs.push(eachListing._id);
     })
 
+    let allActiveListingIDs = allTheListingsIDs;
+
+    // checking if user already exist 
+    if(req.user){
+      req.user.activeListings = [];
+      let userActiveListingIDs = allTheListingsIDs.map((eachthing)=>{
+        return eachthing.toString();
+
+      })
+
+      let leftListings = req.user.leftListings.map((eachthing)=>{
+          return eachthing.toString();
+      })
+
+      // console.log(userActiveListing);
+      // console.log(leftListings);
+      // console.log("******",userActiveListing.length);
+      userActiveListingIDs = userActiveListingIDs.filter((each)=>{
+          return !leftListings.includes(each);
+      })
+    
+      console.log("actual listing ids meow:", userActiveListingIDs.length);
+      
+
+
+
+      req.user.activeListings = userActiveListingIDs;
+
+      req.user.save()
+      .then(()=>{
+        // res.redirect("/feed")
+        // res.render('user-views/feed', {listings: allTheListings})
+        // res.render('user-views/feed', {listings: allTheListings})
+
+        console.log(userActiveListing);
+        res.render('user-views/feed', {listings: userActiveListing})
+      })
+      .catch((err)=>{
+        next(err)
+      })
     }
 
-    res.render('user-views/feed', {listings: allTheListings})
+    
+
+
+
+
+
+
+
+    
+// Un commment out right below
+    //checking if user already exist 
+    // if(req.user){
+    //   let userActiveListing = allActiveListing;
+    //   let leftListings = req.user.leftListings;
+
+    //   leftListings.forEach((eachListListing)=>{
+    //     userActiveListing.filter(eachListListing);
+    //   })
+
+    //   req.user.save()
+    //   .then(()=>{
+    //     // res.redirect("/feed")
+    //     // res.render('user-views/feed', {listings: allTheListings})
+    //     res.render('user-views/feed', {listings: allTheListings})
+    //   })
+    //   .catch((err)=>{
+    //     next(err)
+    //   })
+    // }
+
+
+
+
+    // // Change forEach into a for loop going in reverse to display newest listings
+    // allTheListings.forEach((eachListing)=>{
+    //   console.log('its a listing');
+
+    //     if(eachListing.author._id.equals(req.user._id)){
+    //         eachListing.owned = true;
+    //     }
+
+    // })
+    // res.render('user-views/feed', {listings: allTheListings})
   })
   .catch((err)=>{
-      next(err)
+    next(err)
+  })
+
+})
+
+router.post('/delete', (req, res, next)=>{
+  Listing.find().populate('author')
+  .then((allTheListings)=>{
+    allTheListings.reverse();
+    let currentListingID = allTheListings[0]._id;
+    // console.log(currentListing.title);
+    console.log(req.user.username);
+    console.log(req.user.leftListings);
+
+    req.user.leftListings.push(currentListingID);
+    req.user.save()
+    .then(()=>{
+      res.redirect("/feed")
+    })
+
+    console.log(req.user.leftListings);
+
+
+  })
+  .catch((err)=>{
+    next(err)
   })
 })
 
+router.post('/like', (req, res, next)=>{
+  res.redirect("/feed")
+})
 
 
 

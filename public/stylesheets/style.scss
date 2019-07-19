@@ -329,7 +329,54 @@ a{
 // }
 
 
+//Sign-up Page Styling
+form.sign-up-form{
+  border: 2px solid #226C9B;
+  border-radius: 5px;
+  width:50%;
+  margin-left: 25%;
+  padding-top: 20px;
+}
 
+.sign-up-form.button{
+  margin-top:50px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-up-form div{
+  margin-bottom: 20px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form.button{
+  margin-top:50px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form div{
+  margin-bottom: 20px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form.login-form{
+  border: 2px solid #226C9B;
+  border-radius: 5px;
+  width:50%;
+  margin-left: 25%;
+  padding-top: 20px;
+}
 
 
 

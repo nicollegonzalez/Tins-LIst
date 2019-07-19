@@ -4,19 +4,26 @@
       {{msg}}
       {{/if}}
   </div>
-  <form action="/login" method="POST">
-    <label>Your Username</label>
-    <input type="text" name="username">
-    <label>Password</label>
-    <input type="text" name="password">
-
-
-    <button>Save</button>
+  <form class="login-form" action="/login" method="POST">
+    <div>
+      <span>Username:</span>
+      <input type="text" name="username">
+    </div>
+    <div>
+      <span>Password:</span>
+      <input type="password" name="password">
+    </div>
+    
+    <div>
+      <button class="btn btn-light">Login</button>
+    </div>
+    
 
   </form>
 
 
-  <div>
-    <a href="/auth/google">Log In With Google</a> 
+  <div class='sign-up-form button'>
+    {{!-- <a href="/auth/google">Log In With Google</a>  --}}
+    <a class="btn btn-light"href="/auth/google"><img src="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png" alt="google-icon" height="20px" width="20px"> Continue With Google</a> 
   </div>
 </div>
